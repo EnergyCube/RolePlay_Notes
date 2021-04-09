@@ -16,7 +16,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 🎭 Relationship Management\
 🔍 Information Search\
 ✨ API PHP (See ./web/api.php)\
-✨ API C# (See ./client/RPN_API_Web.cs & ./client/RPN_API_Json.cs)\
+✨ API C# (See ./client/RolePlay Notes/RPN_API_Web.cs)\
 ✨ InnoSetup Script (See ./setup)
 
 
@@ -46,7 +46,9 @@ After that open the PHP API (api.php)\
 
 📝 Note : You can also use the Pre-Compiled [Client Setup](https://github.com/EnergyCube/RolePlay_Notes/releases/latest).\
 You will need [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) and the .NET Framework 4.0\
-Open the solution located at ./client, set your Server IP (don't forget HTTPS if you have it) in the C# API, check that you selected Release and click Build.\
+Open the solution located at ./client, set your Server IP (don't forget HTTPS if you have it) in the C# API.\
+You need to add a referance to the projet, my fork of FlatUI, download it and select the dll as a referance.
+check that you selected Release and click Build.\
 \
 ⚠️ Remember that the Client itself need it too, .NET Framework 4.0 is supported by default in Windows 10 but older Windows can require to install it manually.\
 You can download and install it manually [here](https://www.microsoft.com/en-us/download/details.aspx?id=17851) from Windows XP (SP 2 for x86_64 and SP 3 for x86) to Windows 10
