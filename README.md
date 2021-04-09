@@ -19,6 +19,12 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ✨ API C# (See ./client/RPN_API_Web.cs & ./client/RPN_API_Json.cs)\
 ✨ InnoSetup Script (See ./setup)
 
+
+## 📖 Notes
+![image](https://raw.githubusercontent.com/EnergyCube/RolePlay_Notes/main/screenshots/tek_hub.png)\
+This project was developed as part of a hub project at Epitech.\
+RolePlay Notes PHP API is not OpenSource yet.
+
 ## 🌐 Setup the Server
 
 To be able to use the RolePlay Notes Client you need to install a Web Server and MariaDB, after that place files from ./web to your web server.
@@ -35,10 +41,6 @@ cp -R ./web [your web server folder (probably /var/www/html)]
 After that open the PHP API (api.php)\
 => Create all tables\
 => Create a new user inside a group
-
-## 📖 Notes
-This project was developed as part of a hub project at Epitech.\
-RolePlay Notes PHP API is not OpenSource yet.
 
 ## 💻Build the Client
 
