@@ -54,13 +54,13 @@ You can download and install it manually [here](https://www.microsoft.com/en-us/
 
 ## ScreenShots
 * Login\
-![image]()
+![image](https://raw.githubusercontent.com/EnergyCube/RolePlay_Notes/main/screenshots/login.PNG)
 
 * Money Manager\
-![image]()
+![image](https://raw.githubusercontent.com/EnergyCube/RolePlay_Notes/main/screenshots/money_manager.PNG)
 
 * Information Management (Intelligence) \
-![image]()
+![image](https://raw.githubusercontent.com/EnergyCube/RolePlay_Notes/main/screenshots/rens_search.PNG)
 
 * Resource Manager\
-![image]()
+![image](https://raw.githubusercontent.com/EnergyCube/RolePlay_Notes/main/screenshots/ress_manager.PNG)
