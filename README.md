@@ -47,7 +47,7 @@ After that open the PHP API (api.php)\
 📝 Note : You can also use the Pre-Compiled [Client Setup](https://github.com/EnergyCube/RolePlay_Notes/releases/latest).\
 You will need [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) and the .NET Framework 4.0\
 Open the solution located at ./client, set your Server IP (don't forget HTTPS if you have it) in the C# API.\
-You need to add a referance to the projet, my fork of FlatUI, download it and select the dll as a referance.
+You need to add a referance to the projet, my [fork of FlatUI](https://github.com/EnergyCube/FlatUI/releases/latest), download it and select the dll as a referance.
 check that you selected Release and click Build.\
 \
 ⚠️ Remember that the Client itself need it too, .NET Framework 4.0 is supported by default in Windows 10 but older Windows can require to install it manually.\
