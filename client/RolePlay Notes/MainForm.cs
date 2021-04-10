@@ -22,6 +22,7 @@ namespace RolePlay_Notes
 
             nameFlatLabel.Text = "Connecté à RPN en temps que '" + web.GetUsername() + "'";
             groupFlatLabel.Text = "Votre groupe est '" + web.GetGroup() + "'";
+            versionFlatLabel.Text = "v" + ProductVersion;
 
             Reload();
         }
