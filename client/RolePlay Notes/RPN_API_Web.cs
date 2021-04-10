@@ -14,7 +14,8 @@ namespace RolePlay_Notes
     {
 
         // HTTPS IS VERY IMPORT (but not required) TO ENCRYPT POST DATA (=> USERNAME AND PASSWORD etc)
-        private string BaseURL = "http(s)://YOUR_SERVER_IP_OR_DOMAIN/";
+        // You need to change this URL when you init your project
+        public static string BaseURL = null;
 
         public enum Permission
         {

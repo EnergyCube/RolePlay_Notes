@@ -23,13 +23,32 @@ namespace RolePlay_Notes
 
             iniFile = new IniFile("./config.ini");
 
+            if (string.IsNullOrEmpty(iniFile.Read("server", "Login")) ||
+                string.IsNullOrEmpty(iniFile.Read("ssl", "Login")))
+            {
+                iniFile.Write("ssl", "", "Login");
+                iniFile.Write("server", "", "Login");
+                MessageBox.Show("Vous semblez avoir lancé RPN sans avoir de fichier de configuration valide, ce fichier" +
+                    "est très important et comporte les informations du serveur.\nMerci d'ouvrir le fichier config.ini" +
+                    "qui se situe dans le dossier de l'application afin d'y rentrer les informations néecessaire !\n" +
+                    "Vous devriez peut être réinstaller l'application afin de restauré le fichier d'origine.",
+                    "Fichier de Configuration Invalide");
+                Environment.Exit(0);
+            }
+
             if (!string.IsNullOrEmpty(iniFile.Read("user", "Login")) &&
                 !string.IsNullOrEmpty(iniFile.Read("password", "Login")) &&
-                !string.IsNullOrEmpty(iniFile.Read("db", "Login")))
+                !string.IsNullOrEmpty(iniFile.Read("db", "Login")) &&
+                !string.IsNullOrEmpty(iniFile.Read("server", "Login")) &&
+                !string.IsNullOrEmpty(iniFile.Read("ssl", "Login")))
             {
                 userFlatTextBox.Text = iniFile.Read("user", "Login");
                 mdpFlatTextBox.Text = Base64Decode(iniFile.Read("password", "Login"));
                 groupFlatTextBox.Text = iniFile.Read("db", "Login");
+                if (iniFile.Read("ssl", "Login").Equals("true", StringComparison.InvariantCultureIgnoreCase))
+                    RPN_API_Web.BaseURL = "https://" + iniFile.Read("server", "Login") + "/";
+                else
+                    RPN_API_Web.BaseURL = "http://" + iniFile.Read("server", "Login") + "/";
                 remeberFlatCheckBox.Checked = true;
             }
 
