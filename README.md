@@ -18,13 +18,13 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 💡 Custom Theme Color\
 ✨ API PHP (See ./web/api.php)\
 ✨ API C# (See ./client/RolePlay Notes/RPN_API_Web.cs)\
-✨ InnoSetup Script (See ./setup)
+✨ InnoSetup Script (See ./setup)\
+🍷 Working on Linux with Wine ! (With .NET Framework >= 4)
 
 
 ## 📖 Notes
 ![image](https://raw.githubusercontent.com/EnergyCube/RolePlay_Notes/main/screenshots/tek_hub.png)\
 This project was developed as part of a hub project at Epitech.
-🍷 Working on Linux with Wine ! (With .NET Framework >= 4)
 
 ## 🌐 Setup the Server
 
