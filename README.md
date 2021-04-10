@@ -15,6 +15,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ✔️ Internal Group Management\
 🎭 Relationship Management\
 🔍 Information Search\
+💡 Custom Theme Color\
 ✨ API PHP (See ./web/api.php)\
 ✨ API C# (See ./client/RolePlay Notes/RPN_API_Web.cs)\
 ✨ InnoSetup Script (See ./setup)
@@ -22,8 +23,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## 📖 Notes
 ![image](https://raw.githubusercontent.com/EnergyCube/RolePlay_Notes/main/screenshots/tek_hub.png)\
-This project was developed as part of a hub project at Epitech.\
-RolePlay Notes PHP API is not OpenSource yet.
+This project was developed as part of a hub project at Epitech.
+🍷 Working on Linux with Wine ! (With .NET Framework >= 4)
 
 ## 🌐 Setup the Server
 
@@ -47,10 +48,11 @@ After that open the PHP API (api.php)\
 📝 Note : You can also use the Pre-Compiled [Client Setup](https://github.com/EnergyCube/RolePlay_Notes/releases/latest).\
 You will need [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) and the .NET Framework 4.0\
 Open the solution located at ./client, set your Server IP (don't forget HTTPS if you have it) in the C# API.\
-You need to add a referance to the projet, my [fork of FlatUI](https://github.com/EnergyCube/FlatUI/releases/latest), download it and select the dll as a referance.
-check that you selected Release and click Build.\
+You need to place FlatUI.dll (here is my [fork](https://github.com/EnergyCube/FlatUI/releases/latest)) in the client folder.\
+Open the solution, check that you selected Release and click Build.\
+After that open the application, you will have a warning, close it and open config.ini, simply put the server ip or domain and set sll (https) to true or false\
 \
-⚠️ Remember that the Client itself need it too, .NET Framework 4.0 is supported by default in Windows 10 but older Windows can require to install it manually.\
+⚠️ Remember that the Client itself need FlatUI.dll. And also the .NET Framework 4.0 (or upper), it is supported by default in Windows 10 but older Windows can require to install it manually.\
 You can download and install it manually [here](https://www.microsoft.com/en-us/download/details.aspx?id=17851) from Windows XP (SP 2 for x86_64 and SP 3 for x86) to Windows 10
 
 ## License
