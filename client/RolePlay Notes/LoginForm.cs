@@ -36,6 +36,11 @@ namespace RolePlay_Notes
                 Environment.Exit(0);
             }
 
+            if (iniFile.Read("ssl", "Login").Equals("true", StringComparison.InvariantCultureIgnoreCase))
+                RPN_API_Web.BaseURL = "https://" + iniFile.Read("server", "Login") + "/";
+            else
+                RPN_API_Web.BaseURL = "http://" + iniFile.Read("server", "Login") + "/";
+
             if (!string.IsNullOrEmpty(iniFile.Read("user", "Login")) &&
                 !string.IsNullOrEmpty(iniFile.Read("password", "Login")) &&
                 !string.IsNullOrEmpty(iniFile.Read("db", "Login")) &&
@@ -45,10 +50,6 @@ namespace RolePlay_Notes
                 userFlatTextBox.Text = iniFile.Read("user", "Login");
                 mdpFlatTextBox.Text = Base64Decode(iniFile.Read("password", "Login"));
                 groupFlatTextBox.Text = iniFile.Read("db", "Login");
-                if (iniFile.Read("ssl", "Login").Equals("true", StringComparison.InvariantCultureIgnoreCase))
-                    RPN_API_Web.BaseURL = "https://" + iniFile.Read("server", "Login") + "/";
-                else
-                    RPN_API_Web.BaseURL = "http://" + iniFile.Read("server", "Login") + "/";
                 remeberFlatCheckBox.Checked = true;
             }
 
@@ -70,10 +71,10 @@ namespace RolePlay_Notes
         private void loginFlatButton_Click(object sender, EventArgs e)
         {
             loginFlatButton.Enabled = false;
-            web = new RPN_API_Web(userFlatTextBox.Text, mdpFlatTextBox.Text, groupFlatTextBox.Text);
 
             try
             {
+                web = new RPN_API_Web(userFlatTextBox.Text, mdpFlatTextBox.Text, groupFlatTextBox.Text);
                 if (web.Login())
                 {
                     if (remeberFlatCheckBox.Checked)
