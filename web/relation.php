@@ -9,9 +9,6 @@ $post_group = $_POST['group'];
 if (CheckLoginArgs($post_username, $post_password, $post_group)) {
 
     $db_name = $post_group;
-    $db_user = 'root';
-    $db_password = 'VkQ$bT*O!6d';
-    $db_host = 'localhost';
 
     try {
         $pdo = new PDO("mysql:host=$db_host; dbname=$db_name", $db_user, $db_password);

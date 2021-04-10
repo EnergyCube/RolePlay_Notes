@@ -1,5 +1,9 @@
 <?php
 
+$db_user = 'your_db_user'; // probably root
+$db_password = 'your_db_password';
+$db_host = 'localhost';
+
 /* Utils */
 function IsNullOrEmptyString($str)
 {
