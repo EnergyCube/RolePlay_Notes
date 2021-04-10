@@ -47,6 +47,13 @@ namespace RolePlay_Notes
 
         private void applyFlatButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(nameFlatTextBox.Text) || string.IsNullOrEmpty(behaviourComboBox.Text)
+                || string.IsNullOrEmpty(powerflatComboBox.Text) || string.IsNullOrEmpty(groupTypeComboBox.Text)
+                || string.IsNullOrEmpty(financialSituationFlatComboBox.Text) || string.IsNullOrEmpty(infoTextBox.Text))
+            {
+                MessageBox.Show("Merci de renseigner toutes les informations !");
+                return;
+            }
             if (id == -1)
             {
                 if (!web.CreateRelation(nameFlatTextBox.Text, behaviourComboBox.Text, powerflatComboBox.Text, groupTypeComboBox.Text,

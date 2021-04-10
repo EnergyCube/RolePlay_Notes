@@ -32,6 +32,9 @@ namespace RolePlay_Notes
             this.web = web;
 
             ReloadData();
+
+            // Hide work in tab
+            flatTabControl1.TabPages.Remove(flatTabControl1.TabPages[1]);
         }
 
         private void ReloadData()
