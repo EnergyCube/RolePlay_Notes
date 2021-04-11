@@ -27,7 +27,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## 📖 Notes
 ![image](https://raw.githubusercontent.com/EnergyCube/RolePlay_Notes/main/screenshots/tek_hub.png)\
-This project was developed as part of a hub project at Epitech.
+This project was developed as part of a hub project at Epitech (Tek 1).
 
 ## 🌐 Setup the Server
 
@@ -42,7 +42,7 @@ sudo apt install apache2
 sudo apt install php
 ```
 
-After that place files from ./web to your web server :
+After that place files from ./web to your web server folder :
 
 ```bash
 cp -R ./web [your web server folder (probably /var/www/html)]
@@ -82,7 +82,8 @@ You can download and install it manually [here](https://www.microsoft.com/en-us/
 
 ## 📥Build the Setup
 
-After the generation of the Client you need to make one small modification in the setup generation script. Replace the following values by the values of your server.
+After the generation of the Client you need to make one small modification in the setup generation script.\
+Replace the following values by the values of your server :
 
 ```cpp
 ; Set your server ip / domain
