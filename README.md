@@ -96,6 +96,15 @@ Replace the following values by the values of your server :
 #define SupportSSL "true"
 ```
 
+and also don't forget to generate a GUID for the setup !
+
+```ini
+[Setup]
+; (You need to generate a new GUID, click Tools | Generate GUID inside the IDE.)
+; Must look like this : AppId={{X-X-X-X-X}
+AppId={
+```
+
 Once done, generate the setup, and you are ready to use and distribute RolePlay Notes.
 
 ## License
