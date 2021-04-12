@@ -19,6 +19,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ✨ API PHP (See ./web/api.php)\
 ✨ API C# (See ./client/RolePlay Notes/RPN_API_Web.cs)\
 ✨ InnoSetup Script (See ./setup/setup.iss)\
+🔒 SSL Support (From TLS 1 to 1.2 depending on the Windows version)\
 🗔 From Windows XP* to Windows 10\
 🍷 Working on Linux with Wine* !
 
@@ -31,7 +32,7 @@ This project was developed as part of a hub project at Epitech (Tek 1).
 
 ## 🌐 Setup the Server
 
-To be able to use the RolePlay Notes Client you need to install a Web Server (publicly available) and MariaDB (only available locally).
+To be able to use the RolePlay Notes Client you need to install a Web Server (publicly available) and MariaDB or MySQL (only available locally).
 
 For Ubuntu (or Debian based) :
 ```bash
@@ -58,7 +59,8 @@ $db_host = 'localhost';
 ```
 
 * Create all tables & Create a new user inside a group (See CreateGroup function in the PHP API)
-  
+
+* Note for SSL : Windows < 10 don't support natively TLSv1.2 (It is therefore recommended to accept version 1 and 1.2 to allow older versions to connect. However, it is possible to allow the use of TLS 1.1 or 1.2 on older versions of Windows but this is not always official or recommended)
 
 ## 💻 Build the Client
 
@@ -67,7 +69,7 @@ $db_host = 'localhost';
 ##
 
 You will need [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) and the .NET Framework 4.0.\
-You will also need FlatUI.dll (here is my [fork](https://github.com/EnergyCube/FlatUI/releases/latest)), place it in the client folder.\
+You will also need FlatUI.dll (here is my [fork](https://github.com/EnergyCube/FlatUI/releases/latest)), place it in the client folder. (I recommand you to recompile it for the .NET Framework 4)\
 \
 You are now ready to build the application ! Open the Solution, select Release and Build !\
 \
