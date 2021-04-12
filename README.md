@@ -1,6 +1,6 @@
 # 📝 RolePlay Notes
 
-Do you need to take notes in your RP game?\
+Do you need to take notes in your paramilitary RP game ?\
 It's often difficult, isn't it? Well, not anymore!
 
 
@@ -60,7 +60,7 @@ $db_host = 'localhost';
 * Create all tables & Create a new user inside a group (See CreateGroup function in the PHP API)
   
 
-## 💻Build the Client
+## 💻 Build the Client
 
 📝 Note : You can also use the Pre-Compiled [Client Setup](https://github.com/EnergyCube/RolePlay_Notes/releases/latest).\
 ⚠️ But you will need to edit the config.ini before using it.
@@ -80,7 +80,7 @@ And your are ready to use RolePlay Notes !
 ⚠️ Remember that the Client itself need FlatUI.dll. And also the .NET Framework 4.0 (or upper), it is supported by default in Windows 10 but older Windows can require to install it manually.\
 You can download and install it manually [here](https://www.microsoft.com/en-us/download/details.aspx?id=17851) from Windows XP (SP 2 for x86_64 and SP 3 for x86) to Windows 10
 
-## 📥Build the Setup
+## 📥 Build the Setup
 
 After the generation of the Client you need to make one small modification in the setup generation script.\
 Replace the following values by the values of your server :
