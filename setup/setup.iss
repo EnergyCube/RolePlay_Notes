@@ -1,5 +1,5 @@
 #define MyAppName "RolePlay Notes"
-#define MyAppVersion "0.8"
+#define MyAppVersion "0.8.1.0"
 #define MyAppPublisher "EnergyCube"
 #define MyAppURL "https://energycube.fr"
 #define MyAppExeName "RolePlayNotes.exe"

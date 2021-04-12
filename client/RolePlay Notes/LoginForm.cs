@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -26,20 +27,102 @@ namespace RolePlay_Notes
             if (string.IsNullOrEmpty(iniFile.Read("server", "Login")) ||
                 string.IsNullOrEmpty(iniFile.Read("ssl", "Login")))
             {
-                iniFile.Write("ssl", "", "Login");
-                iniFile.Write("server", "", "Login");
-                MessageBox.Show("Vous semblez avoir lancé RPN sans avoir de fichier de configuration valide, ce fichier" +
-                    "est très important et comporte les informations du serveur.\nMerci d'ouvrir le fichier config.ini" +
-                    "qui se situe dans le dossier de l'application afin d'y rentrer les informations néecessaire !\n" +
-                    "Vous devriez peut être réinstaller l'application afin de restauré le fichier d'origine.",
+                if (string.IsNullOrEmpty(iniFile.Read("server", "Login")))
+                    iniFile.Write("server", "", "Login");
+                if (string.IsNullOrEmpty(iniFile.Read("ssl", "Login")))
+                    iniFile.Write("ssl", "", "Login");
+                MessageBox.Show("Vous semblez avoir lancé RPN sans avoir de fichier de configuration valide, ce fichier " +
+                    "est très important et comporte les informations du serveur.\nMerci d'ouvrir le fichier config.ini " +
+                    "qui se situe dans le dossier de l'application afin d'y rentrer les informations néecessaires !\n" +
+                    "Vous devriez peut être réinstaller l'application afin de restaurer le fichier d'origine.",
                     "Fichier de Configuration Invalide");
                 Environment.Exit(0);
             }
 
             if (iniFile.Read("ssl", "Login").Equals("true", StringComparison.InvariantCultureIgnoreCase))
+            {
+                if (string.IsNullOrEmpty(iniFile.Read("ssl_version", "Login")))
+                {
+                    // 768 TLS 1.1 - 3072 TLS 1.2 - 12288 TLS 1.3
+                    if (Environment.OSVersion.Version.Major >= 10 /* Windows 10 */ ||
+                        (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 3) /* Windows 8.1 */)
+                    {
+                            /* 1.3 not working :| */
+                            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+                            iniFile.Write("ssl_version", "1.2", "Login");
+                    }
+                    else
+                    {
+                        if (!iniFile.Read("no_ssl_warning", "Login").Equals("true", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            MessageBox.Show("Votre version de Windows ne supporte pas le TLS 1.2 !\n" +
+                               "La version TLS 1.0 sera utilisé à la place, merci de noter que cette version est " +
+                               "considérée comme compromise." +
+                               "\nSi vous pensez que votre ordinateur est en mesure d'utiliser " +
+                               "une version plus récente, modifier la version TLS dans le fichier de configuration.\n" +
+                               "(Merci de noter qu'il est probable que la connexion au serveur échoue, car la majorité des " +
+                               "serveur désactive les communications TNS 1.0)", "Windows < 10 !");
+                            iniFile.Write("deprecated_ssl_warning", "true", "Login");
+                        }
+                        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls; // TLS 1.0
+                        iniFile.Write("ssl_version", "1.0", "Login");
+                    }
+                } else
+                {
+                    string tls_version = iniFile.Read("ssl_version", "Login");
+                    Console.WriteLine(tls_version);
+                    if (tls_version.Equals("1.0", StringComparison.InvariantCultureIgnoreCase))
+                        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls; // TLS 1.0
+                    else if (tls_version.Equals("1.1", StringComparison.InvariantCultureIgnoreCase))
+                        ServicePointManager.SecurityProtocol = (SecurityProtocolType)768; // TLS 1.1
+                    else if (tls_version.Equals("1.2", StringComparison.InvariantCultureIgnoreCase))
+                        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072; // TLS 1.2
+                    else if (tls_version.Equals("1.3", StringComparison.InvariantCultureIgnoreCase))
+                        ServicePointManager.SecurityProtocol = (SecurityProtocolType)12288; // TLS 1.3
+                    else
+                    {
+                        MessageBox.Show("Version TLS invalide ! Réinitialisation de la version...");
+                        if (Environment.OSVersion.Version.Major >= 10 /* Windows 10 */ ||
+                        (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 3) /* Windows 8.1 */)
+                        {
+                            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072; // TLS 1.3
+                            iniFile.Write("ssl_version", "1.2", "Login");
+                        }
+                        else
+                        {
+                            if (!iniFile.Read("no_ssl_warning", "Login").Equals("true", StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                MessageBox.Show("Votre version de Windows ne semble pas supporter le TLS 1.2 !\n" +
+                                   "La version TLS 1.0 sera utilisé à la place, merci de noter que cette version est " +
+                                   "considérée comme compromise." +
+                                   "\nSi vous pensez que votre ordinateur est en mesure d'utiliser " +
+                                   "une version plus récente, modifier la version TLS dans le fichier de configuration.\n" +
+                                   "(Merci de noter qu'il est probable que la connexion au serveur échoue, car la majorité des " +
+                                   "serveur ont désactivé les communications TLS 1.0)", "Windows < 10 !");
+                                iniFile.Write("deprecated_ssl_warning", "true", "Login");
+                            }
+                            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls; // TLS 1.0
+                            iniFile.Write("ssl_version", "1.0", "Login");
+                        }
+                    }
+
+                }
                 RPN_API_Web.BaseURL = "https://" + iniFile.Read("server", "Login") + "/";
+            }
             else
+            {
+                if (!iniFile.Read("no_ssl_warning", "Login").Equals("true", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    MessageBox.Show("La connection utilisé par RPN n'est pas sécurisée et est donc soumise à de potentiels " +
+                        "attaques, merci d'éviter la transmission de donnée sensible et d'uniquement vous connecter depuis " +
+                        "des lieux de confiances.\nAfin de rendre votre connection sécurisée, contactez l'administrateur du " +
+                        "serveur RPN et demandez lui d'activer le TLS/SSL. Si ce dernier le supporte déjà, remplacez la ligne " +
+                        "ssl=false avec ssl=true dans le fichier config.ini du dossier d'installation de RPN.\n\n" +
+                        "Vous ne verrez plus ce message...", "Connection Sans SSL/TLS !");
+                    iniFile.Write("no_ssl_warning", "true", "Login");
+                }
                 RPN_API_Web.BaseURL = "http://" + iniFile.Read("server", "Login") + "/";
+            }
 
             if (!string.IsNullOrEmpty(iniFile.Read("user", "Login")) &&
                 !string.IsNullOrEmpty(iniFile.Read("password", "Login")) &&
