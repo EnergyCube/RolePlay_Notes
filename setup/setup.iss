@@ -164,7 +164,6 @@ begin
             'Please use Windows Update to install this version,'#13
             'Or download and install it manually from dotnet.microsoft.com,'#13
             'and then re-run the {#MyAppName} setup program.', mbInformation, MB_OK);
-        result := false;
-    end else
-        result := true;
+    end;
+    result := true;
 end;
